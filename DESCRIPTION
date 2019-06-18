@@ -1,0 +1,18 @@
+Package: fev1predictor
+Title: R package for the FEV1 predictor described in https://doi.org/10.1503/cmaj.151483
+Version: 0.1.0
+Authors@R: c(
+    person("Amin", "Adibi", email = "adibi@alumni.ubc.ca", role = c("aut", "cph")),
+    person("Mohsen", "Sadatsafavi", email = "mohsen.sadatsafavi@ubc.ca", role = c("aut", "cre")))
+Description: This package allows clinicians to predict the rate and severity of exacerbations for COPD patients.
+Depends: R (>= 3.5.0)
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports:
+    stats,
+    MASS,
+    dplyr,
+    stringr,
+    extrafont
+RoxygenNote: 6.1.1
