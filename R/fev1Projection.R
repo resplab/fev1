@@ -248,7 +248,7 @@ fev1_projection3 <- function(fev1_0, int_effect=0, male, smoking, age, weight, h
   fev1_low<-fev1_avg-1.96*sqrt(vari)
   
   df <-data.frame(x, y=fev1_avg, vari, fev1_low, fev1_up)
-  names(df) <- c("Time", "FEV1", "variance", "FEV1_lower", "FEV1_upper")
+  names(df) <- c("Year", "FEV1", "variance", "FEV1_lower", "FEV1_upper")
   
   # cv3 <-sqrt(vari[2:12])/(fev1_avg[2:12]-fev1_0)
   # aa3 <-rbind(fev1_avg[2:12], fev1_up[2:12], fev1_low[2:12], round(abs(cv3)*100,0))

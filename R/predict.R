@@ -6,8 +6,17 @@
 #' @export
 predictFEV1 <- function (patientData){
 
-  results <- fev1_projection3(fev1_0 = patientData$FEV1, male = patientData$male, smoking = patientData$smoker, age = patientData$age, 
+  results_smoker <- fev1_projection3(fev1_0 = patientData$FEV1, male = patientData$male, smoking = 1, age = patientData$age, 
                               weight = patientData$weight, height = patientData$height)
+  
+  
+  results_smoker$Scenario <- "Smoking"
+  results_sustainedQuitter <- fev1_projection3(fev1_0 = patientData$FEV1, male = patientData$male, smoking = 0, age = patientData$age, 
+                                      weight = patientData$weight, height = patientData$height)
+  
+  results_sustainedQuitter$Scenario <- "QuitsSmoking"
+  
+  results <- rbind (results_smoker,  results_sustainedQuitter)
   return(results)
 
 }
