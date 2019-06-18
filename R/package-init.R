@@ -9,12 +9,13 @@ NULL
 #'  variables are as follows:
 #'
 #' \itemize{
+#'   \item ID. patient ID
 #'   \item male. whether the patient is male (0,1)
 #'   \item age. the age of the patient (40--90)
 #'   \item smoker. whether the patient is currently a smoker (0,1)
 #'   \item FEV1. Baseline forced expiratroy volume in 1 second in L (0--5)
-#'   \item weight. in kg (20--150)
 #'   \item height. in m (1--2.2)
+#'   \item weight. in kg (20--150)
 #'   }
 
 #' @docType data

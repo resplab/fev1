@@ -1,6 +1,6 @@
+timeHorizon <- 15 
+
 fev1_projection <- function(fev1_0, int_effect, tio="No"){
-  
-  timeHorizon <- 15 
   
   x<-c(0:timeHorizon)
   
@@ -75,15 +75,11 @@ fev1_projection <- function(fev1_0, int_effect, tio="No"){
   
 }
 
-fev1_projection2 <- function(fev1_0, int_effect, sex, smoking, age, weight, height, oco, tio="No"){
+fev1_projection2 <- function(fev1_0, int_effect, male, smoking, age, weight, height, oco, tio="No"){
   
   x<-c(0:timeHorizon)
   
-  if (sex=="male"){
-    gender<-1
-  } else if (sex=="female"){
-    gender<-0
-  }
+  gender <- male
   
   if (smoking=="Smoker"){
     smo<-1
@@ -176,27 +172,20 @@ fev1_projection2 <- function(fev1_0, int_effect, sex, smoking, age, weight, heig
   
 }
 
-fev1_projection3 <- function(fev1_0, int_effect, sex, smoking, age, weight, height, tio="No"){
+fev1_projection3 <- function(fev1_0, int_effect=0, male, smoking, age, weight, height){
   
-  print("kinda workings")
   x<-c(0:timeHorizon)
   
-  if (sex=="male"){
-    gender<-1
-  } else if (sex=="female"){
-    gender<-0
-  }
+  gender <- male
   
-  if (smoking=="Smoker"){
+  if (smoking==1){
     smo<-1
     int<-0
-  } else if (smoking=="Sustained quitter"){
+  } else if (smoking==0){
     smo<-0
     int<-0
   }
-  
-  tioBefore <- 0.015
-  tioAfter <- 0.022
+
   
   beta_0<-1.4258
   beta_t<--0.1795
@@ -249,9 +238,6 @@ fev1_projection3 <- function(fev1_0, int_effect, sex, smoking, age, weight, heig
     
     fev1_avg[i]<-unconditional_mu[1] + sigma_12%*%solve(sigma_22)%*%(obs-unconditional_mu[-1])
     vari[i]<-sigma_11 - sigma_12%*%solve(sigma_22)%*%sigma_21
-    if(tio=="Yes"){
-      fev1_avg[i] <- fev1_avg[i] + tioBefore*i
-    }
   }
   
   
@@ -262,18 +248,18 @@ fev1_projection3 <- function(fev1_0, int_effect, sex, smoking, age, weight, heig
   fev1_low<-fev1_avg-1.96*sqrt(vari)
   
   df <-data.frame(x, y=fev1_avg, vari, fev1_low, fev1_up)
-  names(df) <- c("Time", "FEV1", "vari", "FEV1_lower", "FEV1_upper")
+  names(df) <- c("Time", "FEV1", "variance", "FEV1_lower", "FEV1_upper")
   
-  cv3 <-sqrt(vari[2:12])/(fev1_avg[2:12]-fev1_0)
-  aa3 <-rbind(fev1_avg[2:12], fev1_up[2:12], fev1_low[2:12], round(abs(cv3)*100,0))
+  # cv3 <-sqrt(vari[2:12])/(fev1_avg[2:12]-fev1_0)
+  # aa3 <-rbind(fev1_avg[2:12], fev1_up[2:12], fev1_low[2:12], round(abs(cv3)*100,0))
+  # 
+  # n_mean3 <-(fev1_avg[12]-fev1_0)/timeHorizon*1000
+  # n_sd3 <-((fev1_avg[12]-fev1_0)/timeHorizon-(fev1_low[12]-fev1_0)/timeHorizon)/1.96*1000
+  # bb3 <-data.frame(round(pnorm(-40, n_mean3, n_sd3)*100,0))
   
-  n_mean3 <-(fev1_avg[12]-fev1_0)/timeHorizon*1000
-  n_sd3 <-((fev1_avg[12]-fev1_0)/timeHorizon-(fev1_low[12]-fev1_0)/timeHorizon)/1.96*1000
-  bb3 <-data.frame(round(pnorm(-40, n_mean3, n_sd3)*100,0))
-  
-  df_aa3 <- list("df"=df, "aa1"=aa3, "bb1"=bb3, "options"=3)
-  print(df_aa3)
-  return(df_aa3)
+  #df_aa3 <- list("df"=df, "aa1"=aa3, "bb1"=bb3, "options"=3)
+  res <- df
+  return(res)
   
 }
 

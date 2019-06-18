@@ -6,10 +6,9 @@
 #' @export
 predictFEV1 <- function (patientData){
 
- 
-
-  return(patientData)
-
+  results <- fev1_projection3(fev1_0 = patientData$FEV1, male = patientData$male, smoking = patientData$smoker, age = patientData$age, 
+                              weight = patientData$weight, height = patientData$height)
+  return(results)
 
 }
 
