@@ -1,7 +1,8 @@
 fev1_projection <- function(fev1_0, int_effect, tio="No"){
   
+  timeHorizon <- 15 
   
-  x<-c(0:11)
+  x<-c(0:timeHorizon)
   
   beta_0<-2.7594
   beta_t<--0.04314
@@ -19,7 +20,7 @@ fev1_projection <- function(fev1_0, int_effect, tio="No"){
   vari <- c()
   obs <- fev1_0
   
-  for (i in 1:11){
+  for (i in 1:timeHorizon){
     
     t1 <- i
     beta_t_x <- 0;
@@ -63,8 +64,8 @@ fev1_projection <- function(fev1_0, int_effect, tio="No"){
   cv1<-sqrt(vari[2:12])/(fev1_avg[2:12]-fev1_0)
   aa1<-rbind(fev1_avg[2:12], fev1_up[2:12], fev1_low[2:12], round(abs(cv1)*100,0))
   
-  n_mean1<-(fev1_avg[12]-fev1_0)/11*1000
-  n_sd1<-((fev1_avg[12]-fev1_0)/11-(fev1_low[12]-fev1_0)/11)/1.96*1000
+  n_mean1<-(fev1_avg[12]-fev1_0)/timeHorizon*1000
+  n_sd1<-((fev1_avg[12]-fev1_0)/timeHorizon-(fev1_low[12]-fev1_0)/timeHorizon)/1.96*1000
   bb1<-data.frame(round(pnorm(-40, n_mean1, n_sd1)*100,0))
   
   df_aa1 <- list("df"=df, "aa1"=aa1, "bb1"=bb1, "options"=1)
@@ -76,7 +77,7 @@ fev1_projection <- function(fev1_0, int_effect, tio="No"){
 
 fev1_projection2 <- function(fev1_0, int_effect, sex, smoking, age, weight, height, oco, tio="No"){
   
-  x<-c(0:11)
+  x<-c(0:timeHorizon)
   
   if (sex=="male"){
     gender<-1
@@ -109,7 +110,7 @@ fev1_projection2 <- function(fev1_0, int_effect, sex, smoking, age, weight, heig
   obs<-fev1_0
   
   
-  for (i in 1:11) {
+  for (i in 1:timeHorizon) {
     
     t1 <- i
     
@@ -164,8 +165,8 @@ fev1_projection2 <- function(fev1_0, int_effect, sex, smoking, age, weight, heig
   cv2<-sqrt(vari[2:12])/(fev1_avg[2:12]-fev1_0)
   aa2<-rbind(fev1_avg[2:12], fev1_up[2:12], fev1_low[2:12], round(abs(cv2)*100,0))
   
-  n_mean2<-(fev1_avg[12]-fev1_0)/11*1000
-  n_sd2<-((fev1_avg[12]-fev1_0)/11-(fev1_low[12]-fev1_0)/11)/1.96*1000
+  n_mean2<-(fev1_avg[12]-fev1_0)/timeHorizon*1000
+  n_sd2<-((fev1_avg[12]-fev1_0)/timeHorizon-(fev1_low[12]-fev1_0)/timeHorizon)/1.96*1000
   
   bb2<-data.frame(round(pnorm(-40, n_mean2, n_sd2)*100,0))
   
@@ -178,7 +179,7 @@ fev1_projection2 <- function(fev1_0, int_effect, sex, smoking, age, weight, heig
 fev1_projection3 <- function(fev1_0, int_effect, sex, smoking, age, weight, height, tio="No"){
   
   print("kinda workings")
-  x<-c(0:11)
+  x<-c(0:timeHorizon)
   
   if (sex=="male"){
     gender<-1
@@ -210,7 +211,7 @@ fev1_projection3 <- function(fev1_0, int_effect, sex, smoking, age, weight, heig
   
   obs<-fev1_0
   
-  for (i in 1:11) {
+  for (i in 1:timeHorizon) {
     
     t1 <- i
     
@@ -266,8 +267,8 @@ fev1_projection3 <- function(fev1_0, int_effect, sex, smoking, age, weight, heig
   cv3 <-sqrt(vari[2:12])/(fev1_avg[2:12]-fev1_0)
   aa3 <-rbind(fev1_avg[2:12], fev1_up[2:12], fev1_low[2:12], round(abs(cv3)*100,0))
   
-  n_mean3 <-(fev1_avg[12]-fev1_0)/11*1000
-  n_sd3 <-((fev1_avg[12]-fev1_0)/11-(fev1_low[12]-fev1_0)/11)/1.96*1000
+  n_mean3 <-(fev1_avg[12]-fev1_0)/timeHorizon*1000
+  n_sd3 <-((fev1_avg[12]-fev1_0)/timeHorizon-(fev1_low[12]-fev1_0)/timeHorizon)/1.96*1000
   bb3 <-data.frame(round(pnorm(-40, n_mean3, n_sd3)*100,0))
   
   df_aa3 <- list("df"=df, "aa1"=aa3, "bb1"=bb3, "options"=3)
@@ -278,7 +279,7 @@ fev1_projection3 <- function(fev1_0, int_effect, sex, smoking, age, weight, heig
 
 fev1_projection4 <- function(fev1_0, fev1_prev, int_effect, sex, smoking, age, weight, height, oco, tio="No"){
   
-  x<-c(-1:11)
+  x<-c(-1:timeHorizon)
   print(x)
   print("Test")
   
@@ -312,7 +313,7 @@ fev1_projection4 <- function(fev1_0, fev1_prev, int_effect, sex, smoking, age, w
   
   obs<-c(fev1_prev,fev1_0)
   
-  for (i in 1:11)
+  for (i in 1:timeHorizon)
   {
     t1 <- i
     
