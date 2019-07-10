@@ -1,5 +1,5 @@
 timeHorizon <- 15
-confidenceInterval <<- 1.96
+confidenceInterval = 1.96
 tioBefore <<- 0.015
 tioAfter <<- 0.022
 
@@ -53,7 +53,7 @@ fev1_projection1 <- function(fev1_0, int_effect, tio="No"){
   aa1 = getAA1(fev1DataFrame, fev1_0)
   bb1 = getBB1(fev1DataFrame, fev1_0)
   
-  df_aa1 = list("df"=df, "aa1"=aa1, "bb1"=bb1, "options"=1)
+  df_aa1 = list("df"=fev1DataFrame, "aa1"=aa1, "bb1"=bb1, "options"=1)
   return(df_aa1)
 }
 
@@ -111,7 +111,7 @@ fev1_projection2 <- function(fev1_0, int_effect, male, smoking, age, weight, hei
   aa2 = getAA1(fev1DataFrame, fev1_0)
   bb2 = getBB1(fev1DataFrame, fev1_0)
   
-  df_aa2 <- list("df"=df, "aa1"=aa2, "bb1"=bb2, "options"=2)
+  df_aa2 <- list("df"=fev1DataFrame, "aa1"=aa2, "bb1"=bb2, "options"=2)
   return(df_aa2)
   
 }
