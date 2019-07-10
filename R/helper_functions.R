@@ -8,13 +8,13 @@ getFev1DataFrame = function(fev1_0, fev1_avg, vari, years){
   fev1_low = fev1_avg - confidenceInterval*sqrt(vari)
 
   df = data.frame(years, fev1_avg, vari, fev1_low, fev1_up)
-  names(df) = c("Year", "FEV1_avg", "vari", "FEV1_lower", "FEV1_upper")
+  names(df) = c("Year", "FEV1", "vari", "FEV1_lower", "FEV1_upper")
   return(df)
 }
 
 getAA1 = function(fev1DataFrame, fev1_0) {
-  cv1 = sqrt(fev1DataFrame$vari[2:12]) / (fev1DataFrame$FEV1_avg[2:12]-fev1_0)
-  aa1 = rbind(fev1DataFrame$FEV1_avg[2:12], 
+  cv1 = sqrt(fev1DataFrame$vari[2:12]) / (fev1DataFrame$FEV1[2:12]-fev1_0)
+  aa1 = rbind(fev1DataFrame$FEV1[2:12], 
               fev1DataFrame$fev1_up[2:12], 
               fev1DataFrame$fev1_low[2:12], 
               round(abs(cv1)*100, 0))
@@ -22,8 +22,8 @@ getAA1 = function(fev1DataFrame, fev1_0) {
 }
 
 getBB1 = function(fev1DataFrame, fev1_0) {
-  n_mean1 = (fev1DataFrame$FEV1_avg[12]-fev1_0)/timeHorizon*1000
-  n_sd1 = ((fev1DataFrame$FEV1_avg[12]-fev1_0)/timeHorizon - 
+  n_mean1 = (fev1DataFrame$FEV1[12]-fev1_0)/timeHorizon*1000
+  n_sd1 = ((fev1DataFrame$FEV1[12]-fev1_0)/timeHorizon - 
              (fev1DataFrame$fev1_low[12]-fev1_0)/timeHorizon)/confidenceInterval*1000
   bb1 = data.frame(round(pnorm(-40, n_mean1, n_sd1)*100, 0))
   return(bb1)
