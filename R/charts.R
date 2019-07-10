@@ -1,6 +1,5 @@
 #' Plots FEV1 Projection
 #' @param results results data frame from FEV1 Projection Model
-#' @import ggplot2 plotly
 #' @return patientData with prediction
 #' @examples
 #' patientData = samplePatients[1,]

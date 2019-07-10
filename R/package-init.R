@@ -1,6 +1,8 @@
 #' @import dplyr
-#' @importFrom stats dpois quantile rpois
+#' @import ggplot2
+#' @importFrom stats dpois quantile rpois pnorm
 #' @importFrom stringr str_replace
+#' @importFrom plotly ggplotly 
 NULL
 
 #' Sample Patient Characteristics Inputs
