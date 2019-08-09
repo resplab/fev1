@@ -1,5 +1,5 @@
 Package: fev1
-Title: R package for the FEV1 predictor described in https://doi.org/10.1503/cmaj.151483
+Title: R package for the FEV1 predictor described in Zafari et al. <doi:10.1503/cmaj.151483>
 Version: 0.1.0
 Authors@R: c(
     person("Amin", "Adibi", email = "adibi@alumni.ubc.ca", role = c("aut", "cph")),
