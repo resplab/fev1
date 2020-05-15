@@ -4,8 +4,7 @@
 \alias{fev1_projection3}
 \title{FEV1 Projection Model 3}
 \usage{
-fev1_projection3(fev1_0, int_effect = 0, male, smoking, age, weight,
-  height)
+fev1_projection3(fev1_0, int_effect = 0, male, smoking, age, weight, height)
 }
 \arguments{
 \item{fev1_0}{numeric: Baseline FEV1 score (L)}
