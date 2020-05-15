@@ -79,6 +79,8 @@ By default, the third prediction models in the paper will be used, however, the 
 ```
 predictFEV1(patientData, onePatient = TRUE, predictionModel = 3) 
 ```
+### Web app
+A web app is available at [http://resp.core.ubc.ca/ipress/FEV1Pred](http://resp.core.ubc.ca/ipress/FEV1Pred)
 
 ### Cloud-based API Access
 
