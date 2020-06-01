@@ -91,15 +91,15 @@ The [PRISM platform](http://prism.resp.core.ubc.ca) allows users to access BODEi
 In Ubuntu, you can call the API with `curl`:
 
 ```
-curl -X POST -H "Content-Type: application/json" -d '{"api_key":["123456"],"func":["prism_model_run"],"model_input":[{"ID":"10001","male":1,"age":70,"smoker":1,"FEV1":2.5,"height":1.68,"weight":65}]}' http://prism.resp.core.ubc.ca/ocpu/library/fev1Prism/R/gateway/json
+curl \
+-X POST \
+-H "x-prism-auth-user: REPLACE_WITH_API_KEY" \
+-H "Content-Type: application/json" \
+-d '{"func":["prism_model_run"],"model_input":[{"male":1,"age":70,"smoker":1,"FEV1":2.5,"height":1.68,"weight":65}]}' \
+https://admin-prism-api.cp.prism-ubc.linaralabs.com/route/fev1/run
+
 ```
 
-#### Windows
-
-In Powershell, you can call the API with `curl`:
-```
-curl -Body '{"api_key":["123456"],"func":["prism_model_run"],"model_input":[{"ID":"10001","male":1,"age":70,"smoker":1,"FEV1":2.5,"height":1.68,"weight":65}]}' -Method POST -uri http://prism.resp.core.ubc.ca/ocpu/library/fev1Prism/R/gateway/json -Headers @{"Content-type"="application/json"}
-```
 
 ### Citation
 
