@@ -84,7 +84,7 @@ A web app is available at [http://resp.core.ubc.ca/ipress/FEV1Pred](http://resp.
 
 ### Cloud-based API Access
 
-The [PRISM platform](http://prism.resp.core.ubc.ca) allows users to access BODEindex through the cloud. A MACRO-enabled Excel-file can be used to interact with the model and see the results. To download the PRISM Excel template file for BODEindex please refer to the [PRISM model repository](http://resp.core.ubc.ca/ipress/prism).
+The [PRISM platform](http://prism.resp.core.ubc.ca) allows users to access FEV1 through the cloud. A MACRO-enabled Excel-file can be used to interact with the model and see the results. To download the PRISM Excel template file for BODEindex please refer to the [PRISM model repository](http://resp.core.ubc.ca/ipress/prism).
 
 #### Linux
 
