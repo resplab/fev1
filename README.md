@@ -84,7 +84,7 @@ A web app is available at [http://resp.core.ubc.ca/ipress/FEV1Pred](http://resp.
 
 ### Cloud-based API Access
 
-The [PRISM platform](http://prism.resp.core.ubc.ca) allows users to access FEV1 through the cloud. A MACRO-enabled Excel-file can be used to interact with the model and see the results. To download the PRISM Excel template file for BODEindex please refer to the [PRISM model repository](http://resp.core.ubc.ca/ipress/prism).
+[Peer Models Network](http://www.peermodels.com) allows users to access FEV1 through the cloud. A MACRO-enabled Excel-file can be used to interact with the model and see the results. To download the PRISM Excel template file for BODEindex please refer to the [Peer Models Network model repository](http://models.peermodels.com).
 
 #### Linux
 
@@ -96,7 +96,7 @@ curl \
 -H "x-prism-auth-user: REPLACE_WITH_API_KEY" \
 -H "Content-Type: application/json" \
 -d '{"func":["prism_model_run"],"model_input":[{"male":1,"age":70,"smoker":1,"FEV1":2.5,"height":1.68,"weight":65}]}' \
-https://admin-prism-api.cp.prism-ubc.linaralabs.com/route/fev1/run
+https://prism.peermodelsnetwork.com/route/fev1/run
 
 ```
 
