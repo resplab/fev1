@@ -17,8 +17,7 @@ Imports:
     stringr,
     extrafont,
     ggplot2,
-    plotly,
-    ArgumentCheck
+    plotly
 RoxygenNote: 7.1.0
 Suggests: 
     knitr,
