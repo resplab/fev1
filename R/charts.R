@@ -24,15 +24,15 @@ projectionChart = function(results){
                   theme(
                     panel.background = element_rect(fill = "white",
                                                     colour = "white",
-                                                    size = 0.5, linetype = "solid"),
-                    panel.grid.major = element_line(size = 0.5, linetype = 'solid',
+                                                    linewidth = 0.5, linetype = "solid"),
+                    panel.grid.major = element_line(linewidth = 0.5, linetype = 'solid',
                                                     colour = grey), 
-                    panel.grid.minor = element_line(size = 0.25, linetype = 'solid',
+                    panel.grid.minor = element_line(linewidth = 0.25, linetype = 'solid',
                                                     colour = grey))+
                 theme(axis.title.x = element_text(color = color_a, size = 15, angle = 90, hjust = .5, vjust = .5, face = "plain"))+
                 theme(axis.title.y = element_text(color = color_a, size = 15, angle = 90, hjust = .5, vjust = .5, face = "plain"))+
                 annotate("text", 1.5, 3.52, label="Mean FEV1 decline", colour="black", size=4, hjust=0) +
-                annotate("text", 1.75, 3.4, label="95% Coverage Interval", colour=errorLineColor, size=4, hjust=0, fontface = 'bold'))
+                annotate("text", 1.75, 3.4, label="    95% Coverage Interval", colour=errorLineColor, size=4, hjust=0, fontface = 'bold'))
 
   p$x$data[[1]]$text <- paste0("Time (years): ", results$Year, "<br />", "FEV1 (L): ", round(results$FEV1,3),
                              "<br />FEV1 lower (L): ", round(results$FEV1_lower,3), "<br />FEV1 upper (L): ",

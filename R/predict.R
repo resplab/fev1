@@ -15,16 +15,12 @@ predictFEV1 <- function (patientData, onePatient=TRUE, predictionModel = 3){
   predictionModels = c(1:4)
   
   #* Establish a new 'ArgCheck' object
-  Check <- ArgumentCheck::newArgCheck()
+  #Check <- ArgumentCheck::newArgCheck()
   
-  if (!(predictionModel %in% predictionModels)) 
-    ArgumentCheck::addError(
-      msg = "Prediction Model must be one of 1,2,3,4",
-      argcheck = Check
-    )
+  if (!(predictionModel %in% predictionModels)) stop("Prediction Model must be one of 1,2,3,4")
   
   #* Return errors and warnings (if any)
-  ArgumentCheck::finishArgCheck(Check)
+  #ArgumentCheck::finishArgCheck(Check)
   
   dataParameters = names(patientData)
   if(predictionModel == 1) {
